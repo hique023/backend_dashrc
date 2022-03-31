@@ -1,3 +1,6 @@
+// Importação do Dotenv
+require("dotenv").config();
+
 // Importação do Cors
 const cors = require("cors");
 
@@ -16,11 +19,16 @@ const app = express();
 // Habilitação do cors
 app.use(cors());
 
+// Dados da requisição
+const keyRequest = process.env.APP_ID;
+
+const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-03-31&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
+
 // Rota GET para recuperar dados do MSP
 app.get("/msp", async (req, res) => {
   try {
     // Response é a resposta do Axios mas eu desestruturo de dentro do response
-    const { data } = await axios("ENDPOINT");
+    const { data } = await axios(base_url);
 
     return res.json(data);
   } catch (error) {
@@ -35,6 +43,6 @@ app.use((req, res) => {
 });
 
 // Porta do servidor
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 console.log("Servidor Online... Para finalizar utilize CTRL + C");
