@@ -4,6 +4,9 @@ require("dotenv").config();
 // Importação do Cors
 const cors = require("cors");
 
+// Importação da bilbioteca Date
+var data = new Date();
+
 // Importação do módulo do Express para o Node
 const express = require("express");
 
@@ -19,10 +22,21 @@ const app = express();
 // Habilitação do cors
 app.use(cors());
 
+// Recuperação da data
+const dia = String(data.getDate()).padStart(2, "0");
+var mes = String(data.getMonth() + 1).padStart(2, "0");
+var ano = data.getFullYear();
+var dataAtual = ano + "-" + mes + "-" + dia;
+console.log("Ano: " + typeof ano + " " + ano);
+console.log("Mes: " + typeof mes + " " + mes);
+console.log("Dia: " + typeof dia + " " + dia);
+console.log(dataAtual);
+
 // Dados da requisição
 const keyRequest = process.env.APP_ID;
+const dateFilter = `${ano}-${mes}-${dia}`;
 
-const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-03-31&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
+const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
 
 // Rota GET para recuperar dados do MSP
 app.get("/msp", async (req, res) => {
