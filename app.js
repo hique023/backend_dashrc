@@ -42,7 +42,7 @@ const keyRequest = process.env.APP_ID;
 const dateFilter = `${ano}-${mes}-${dia}`;
 
 // const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
-const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-04-15&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
+const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-04-14&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
 // const base_urltech = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&FILTER_TECH_USERNAME=${req.params.tech}&OUTPUT_FORMAT=JSON`;
 
 // Rota GET para recuperar dados do MSP
@@ -78,6 +78,6 @@ app.use((req, res) => {
 });
 
 // Porta do servidor
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 4000);
 
 console.log("Servidor Online... Para finalizar utilize CTRL + C");
