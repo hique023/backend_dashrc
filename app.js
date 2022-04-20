@@ -41,8 +41,8 @@ var horaAtual = hour + ":" + minutes + ":" + seconds;
 const keyRequest = process.env.APP_ID;
 const dateFilter = `${ano}-${mes}-${dia}`;
 
-// const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
-const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-04-14&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
+const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
+// const base_url = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-04-12&FILTER_PROCESSED=ANSWERED&OUTPUT_FORMAT=JSON`;
 // const base_urltech = `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&FILTER_TECH_USERNAME=${req.params.tech}&OUTPUT_FORMAT=JSON`;
 
 // Rota GET para recuperar dados do MSP
@@ -63,6 +63,7 @@ app.get("/msptech/:tech", async (req, res) => {
     // Response é a resposta do Axios mas eu desestruturo de dentro do response
     const { data } = await axios(
       `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=${dateFilter}&FILTER_PROCESSED=ANSWERED&FILTER_TECH_USERNAME=${req.params.tech}&OUTPUT_FORMAT=JSON`
+      // `https://api.us0.swi-rc.com/integration/get_history_api.php?KEY=${keyRequest}&VARS=ID DATE_START DATE_END TECH_NAME TECH_USERNAME&FILTER_DATE_START_INI=2022-04-12&FILTER_PROCESSED=ANSWERED&FILTER_TECH_USERNAME=${req.params.tech}&OUTPUT_FORMAT=JSON`
     );
 
     return res.json(data);
